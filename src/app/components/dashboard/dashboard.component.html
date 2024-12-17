@@ -1,0 +1,24 @@
+<div class="main-container">
+    <div class="header">
+        <p class="heading">Category</p>
+        <button mat-raised-button class="add-new-group" (click)="addCategory()" *ngIf="role === 'admin'">
+            <mat-icon class="icons">add_circle</mat-icon>
+            Add group</button>
+    </div>
+
+    <div>
+        <mat-card *ngFor="let list of categoryList" class="card-list">
+            <mat-card-header class="card-header">
+                <mat-card-title-group>
+                    <mat-card-title class="heading"> {{list.title}}</mat-card-title>
+                    <mat-card-subtitle class="sub-heading">{{list.description}} </mat-card-subtitle>
+                    <div>
+                        <button mat-raised-button class="view-btn" (click)="viewTask(list)">View Task</button>
+                        <button mat-raised-button class="del-btn" (click)="deleteCategory(list.id)">Delete</button>
+                    </div>
+                </mat-card-title-group>
+            </mat-card-header>
+        </mat-card>
+
+    </div>
+</div>

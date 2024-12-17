@@ -1,0 +1,36 @@
+.login-container{
+    
+    margin-block: 93px;
+    font-family: sans-serif;
+    .card-container{
+        width: 500px;
+        margin: auto;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,1), 
+                0 1px 1px 0 rgba(0,0,0,1), 
+                0 1px 3px 0 rgba(0,0,0,1);
+}
+
+.spinner{
+    width: 20px !important;
+    height: 20px !important;
+    float: right;
+    margin-inline-start: 8px;
+}
+/* mat.snack-bar-overrides{
+      container-color: orange;
+      supporting-text-color: red,
+  } */
+
+  ::ng-deep .warning{
+    background: 'yellow';
+ }

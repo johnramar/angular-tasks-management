@@ -1,0 +1,22 @@
+<div>
+   
+    <mat-sidenav-container class="drawer-container" fullscreen>
+    
+        <mat-sidenav #sidenav mode="side" [opened]="showSideNav">
+            <div>
+                <img src="../../../assets/logo.png" alt="logo" class="logo">
+            </div>
+            <div class="navigation-container">
+                <p class="nav-header">Navigation</p>
+                <button mat-button color="primary" (click)="handleNavigation('tasktracker/dashboard')"><mat-icon>dashboard</mat-icon>Dashboard
+                    
+                </button>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <app-header></app-header>
+
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

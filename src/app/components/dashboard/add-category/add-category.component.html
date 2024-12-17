@@ -1,0 +1,40 @@
+<div class="add-category-container">
+    <mat-card class="card-container">
+        <div>
+            <div>
+                <p class="heading">Add New Category</p>
+                <div>
+                    <form [formGroup]="addCategoryForm" (ngSubmit)="onSubmit()">
+
+                        <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Title</mat-label>
+                            <input matInput placeholder="Enter username" formControlName="title" (input)="titleChange()" required>
+                            <mat-error *ngIf="!alreadyExist" >Title field required</mat-error>
+                        
+                        </mat-form-field>
+                        <p *ngIf="alreadyExist" class="already-exist-error">Category already exist</p>
+
+                        <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Description</mat-label>
+                            <textarea matInput placeholder="Enter description" formControlName="description" required></textarea>
+                            <mat-error>Description field required</mat-error>
+                        </mat-form-field>
+
+                        <div mat-dialog-actions align="end">
+                            <span>
+                                <button type="button" mat-flat-button color="primary" mat-dialog-close>
+                                    Clear
+                                </button>
+                                <button type="submit" mat-stroked-button color="primary" [mat-dialog-close]="true" [disabled]="!addCategoryForm.valid || alreadyExist">
+                                    Add
+                                </button>
+                            </span>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </mat-card>
+</div>
