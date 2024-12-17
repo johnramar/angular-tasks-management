@@ -1,0 +1,106 @@
+<div class="add-task-container">
+    <mat-card class="card-container">
+        <div>
+            <div>
+                <p class="heading">{{addEditData.title}}</p>
+                <div>
+                    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+
+                        <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Title</mat-label>
+                            <input matInput placeholder="Enter username" formControlName="title"
+                                [ngModel]="addEditData.isEditable? addEditData.taskInfo.title : null"
+                                (input)="titleChange()"  [readonly]="disableUserAccess" required>
+                            <mat-error>Title Required</mat-error>
+                        </mat-form-field>
+                        <p *ngIf="alreadyExist" class="already-exist-error">Task already exist</p>
+
+                        <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Description</mat-label>
+
+                            <textarea matInput placeholder="Enter description" formControlName="description"
+                                [ngModel]="addEditData.isEditable ? addEditData.taskInfo.description : null"
+                                [readonly]="disableUserAccess" required></textarea>
+
+                            <mat-error>Title Required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Assign to</mat-label>
+
+                            <input type="text" placeholder="pick user" matInput [formControl]="assignUserControl"
+                                [matAutocomplete]="auto" [readonly]="disableUserAccess"
+                                [ngModel]="addEditData.isEditable ? addEditData.taskInfo.assignTo : null" 
+                                required>
+
+
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of userFilteredOptions | async" [value]="option.name">
+                                    {{option.name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error>Plese assign User</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="input-width">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="datepicker" formControlName="dueDate"
+                                [ngModel]="addEditData.isEditable ? addEditData.taskInfo.dueDate: null" 
+                                [readonly]="disableUserAccess" required>
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #datepicker>
+                                <mat-datepicker-actions>
+                                    <button mat-button matDatepickerCancel>Cancel</button>
+                                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                </mat-datepicker-actions>
+                            </mat-datepicker>
+                            <mat-error>Select date</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="input-width-half">
+                            <mat-label>Priority</mat-label>
+
+                            <mat-select formControlName="priority" 
+                                [ngModel]="addEditData.isEditable ? addEditData.taskInfo.priority : null">
+                                @for (priority of priorityList; track priority) {
+                                <mat-option [value]="priority" >{{priority}}</mat-option>
+                                }
+                            </mat-select>
+
+                            <mat-error>Select task priority</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Status</mat-label>
+
+                            <mat-select formControlName="status" [ngModel]="addEditData.isEditable ? addEditData.taskInfo.status : null">
+                                @for (status of statusList; track status) {
+                                <mat-option [value]="status">{{status}}</mat-option>
+                                }
+                            </mat-select>
+
+                            <mat-error>Select task status</mat-error>
+                        </mat-form-field>
+
+
+                        <div mat-dialog-actions align="end">
+                            <span>
+                                <button type="button" mat-flat-button color="primary" mat-dialog-close>
+                                    Clear
+                                </button>
+                                <button type="button" mat-stroked-button color="primary" type="submit"
+                                    [disabled]="!addTaskForm.valid || !assignUserControl.valid || alreadyExist"
+                                    [mat-dialog-close]="true">
+                                    @if(addEditData.isEditable){Edit}@else{Add}
+                                </button>
+                            </span>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </mat-card>
+</div>

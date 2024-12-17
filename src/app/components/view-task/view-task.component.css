@@ -1,0 +1,36 @@
+.card-list{
+    margin-block: 10px;
+}
+.card-header{
+    padding-bottom: 16px;
+}
+.heading,.category-heading {
+    font-size: 16px;
+    font-weight: 600;
+}
+.category-heading{
+    color: #006BA8;
+}
+.sub-heading {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.task-list{
+    margin: 50px;
+}
+
+.add-task-btn{
+    float: right;
+    margin-block: 10px;
+}
+
+.sort-arrow-down{
+    position: absolute;
+    top: 338px;
+}
+
+.sort-arrow-up{
+    position: absolute;
+    top: 322px;
+}

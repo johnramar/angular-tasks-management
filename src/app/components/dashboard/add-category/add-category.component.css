@@ -1,0 +1,45 @@
+.add-category-container{
+    
+    font-family: sans-serif;
+    .card-container{
+        width: 500px;
+        margin: auto;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 10px;
+        text-align: center;
+        .heading {
+            font-size: 20px;
+            font-weight: 700;
+            margin-block: 6px;
+            color: #006BA8;
+        }
+    }
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,1), 
+                0 1px 1px 0 rgba(0,0,0,1), 
+                0 1px 3px 0 rgba(0,0,0,1);
+}
+
+.input-width{
+    width: 100%;
+}
+.input-width-half{
+    width: 50%;
+    margin-inline-end: 10px;
+}
+
+.already-exist-error{
+    text-align: left;
+    color: var(--mdc-theme-error, #f44336);
+    font-size: 12px;
+    font-weight: 400;
+    padding-left: 15px;
+    margin: 0;
+    position: relative;
+    bottom: 17px;
+}
